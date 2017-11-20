@@ -25,7 +25,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'loginUrl' => ['app/user/login'],
+            'loginUrl' => ['site/login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -64,15 +64,13 @@ $config = [
                 'assignment' => [
                     'class' => 'mdm\admin\controllers\AssignmentController',
                     /* 'userClassName' => 'app\models\User', */
-                    'idField' => 'user_id',
-                    'usernameField' => 'id',
-                    'fullnameField' => 'profile.full_name',
-
+                    'idField' => 'id',
+                    'usernameField' => 'username',
                 ],
             ],
             'layout' => 'left-menu',
-            'mainLayout' => '@app/modules/admin/views/layouts/main.php',
-        ],
+            'mainLayout' => '@app/views/layouts/main.php',
+        ]
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',

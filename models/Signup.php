@@ -4,4 +4,7 @@ namespace app\models;
 
 use mdm\admin\models\form\Signup as SignupForm;
 
-class Si
+class Signup extends SignupForm
+{
+
+}
