@@ -19,8 +19,10 @@ class m171114_092354_create_profile_table extends Migration
             'patronymic'=>$this->string(),
             'date_bith'=>$this->date(),
             'image'=>$this->string(),
+            'email'=>$this->string(),
             'status'=>$this->string(),
             'position'=>$this->string(),
+            'user_id'=>$this->integer(),
             'department_id'=>$this->integer(),
 
         ]);

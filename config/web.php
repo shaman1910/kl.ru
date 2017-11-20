@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -12,6 +13,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '7yG9xhnG7gdXqfhYkoJc-mCZgrkFR9xQ',
@@ -21,7 +25,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'loginUrl' => ['app/user/login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -49,6 +53,34 @@ $config = [
             'rules' => [
             ],
         ],
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
+        'rbac' => [
+            'class' => 'mdm\admin\Module',
+            'controllerMap' => [
+                'assignment' => [
+                    'class' => 'mdm\admin\controllers\AssignmentController',
+                    /* 'userClassName' => 'app\models\User', */
+                    'idField' => 'user_id',
+                    'usernameField' => 'id',
+                    'fullnameField' => 'profile.full_name',
+
+                ],
+            ],
+            'layout' => 'left-menu',
+            'mainLayout' => '@app/modules/admin/views/layouts/main.php',
+        ],
+    ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/*',
+            'admin/*',
+            'rbac/*',
+        ]
     ],
     'params' => $params,
 ];
