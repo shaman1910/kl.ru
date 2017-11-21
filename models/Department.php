@@ -40,4 +40,10 @@ class Department extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
+
+    public function getProfiles()
+    {
+        return $this->hasMany(Profile::className(), ['profile_id' => 'id']);
+    }
+
 }

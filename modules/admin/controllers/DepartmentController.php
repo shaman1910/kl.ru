@@ -2,19 +2,17 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\Department;
 use Yii;
-use app\models\Profile;
-use app\models\ProfileSearch;
-use yii\helpers\ArrayHelper;
+use app\models\Department;
+use app\models\SearchDepartment;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProfileController implements the CRUD actions for Profile model.
+ * DepartmentController implements the CRUD actions for Department model.
  */
-class ProfileController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,12 +30,12 @@ class ProfileController extends Controller
     }
 
     /**
-     * Lists all Profile models.
+     * Lists all Department models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProfileSearch();
+        $searchModel = new SearchDepartment();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Displays a single Profile model.
+     * Displays a single Department model.
      * @param integer $id
      * @return mixed
      */
@@ -59,13 +57,13 @@ class ProfileController extends Controller
     }
 
     /**
-     * Creates a new Profile model.
+     * Creates a new Department model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Profile();
+        $model = new Department();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +75,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Updates an existing Profile model.
+     * Updates an existing Department model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +94,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Deletes an existing Profile model.
+     * Deletes an existing Department model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -109,44 +107,18 @@ class ProfileController extends Controller
     }
 
     /**
-     * Finds the Profile model based on its primary key value.
+     * Finds the Department model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Profile the loaded model
+     * @return Department the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Profile::findOne($id)) !== null) {
+        if (($model = Department::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
-
-    public function actionSetDepartment($id)
-    {
-        $department = Department::findOne(2);
-        var_dump($department->title);die;
-
-        $profile = $this->findModel($id);
-        $selectedDepartment = $profile->department->id;
-        $departments = ArrayHelper::map(Department::find()->all(), 'id', 'title');
-
-        if(Yii::$app->request->isPost)
-        {
-            $department = Yii::$app->request->post('department');
-           if( $profile->saveDepartment($department))
-            {
-                return $this->redirect(['view', 'id'=>$profile->id]);
-            }
-        }
-
-
-        return $this->render('department',[
-            'profile'=>$profile,
-            'selectedDepartment'=>$selectedDepartment,
-            'departments'=>$departments
-        ]);
     }
 }

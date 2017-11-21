@@ -61,4 +61,21 @@ class Profile extends \yii\db\ActiveRecord
             'department_id' => 'Department ID',
         ];
     }
+
+    public function getDepartment()
+    {
+        return $this->hasOne(Department::className(), ['id' => 'department_id']);
+    }
+
+    public function saveDepartment($department_id)
+    {
+        $department = Department::findOne($department_id);
+
+        if($department != null)
+        {
+            $this->link('department', $department);
+            return true;
+        }
+
+    }
 }
