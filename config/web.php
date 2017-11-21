@@ -78,6 +78,8 @@ $config = [
             'site/*',
             'admin/*',
             'rbac/*',
+            'gii/*',
+            'debug/*',
         ]
     ],
     'params' => $params,
