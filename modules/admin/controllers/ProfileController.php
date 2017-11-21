@@ -126,8 +126,6 @@ class ProfileController extends Controller
 
     public function actionSetDepartment($id)
     {
-        $department = Department::findOne(2);
-        var_dump($department->title);die;
 
         $profile = $this->findModel($id);
         $selectedDepartment = $profile->department->id;
