@@ -5,10 +5,13 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\PublicAsset;
+
 
 PublicAsset::register($this);
 ?>
@@ -41,10 +44,19 @@ PublicAsset::register($this);
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Профиль</a></li>
-                            <li><a href="/site/signup"><i class="fa fa-edit"></i> Регистрация</a></li>
-                            <li><a href="/site/login"><i class="fa fa-sign-in"></i> Вход</a></li>
-                            <li><a href="/site/logout"><i class="fa fa-sign-out"></i> Выход</a></li>
+
+                            <?php if(Yii::$app->user->isGuest):?>
+                                <li><a href="<?= Url::toRoute(['site/signup'])?>"><i class="fa fa-edit"></i>Регистрация</a></li>
+                                <li><a href="<?= Url::toRoute(['site/login'])?>"><i class="fa fa-sign-in"></i>Вход</a></li>
+                            <?php else: ?>
+                                <li><a href="<?= Url::toRoute(['profile/index'])?>"><i class="fa fa-user"></i> Профиль</a></li>
+                                <li><?= Html::beginForm(['/site/logout'], 'post')
+                                    . Html::submitButton(
+                                        'Выход (' . Yii::$app->user->identity->username . ')',
+                                        ['class' => 'btn btn-link logout', 'style'=>"padding-top:10px;"]
+                                    )
+                                    . Html::endForm() ?></li>
+                            <?php endif;?>
                         </ul>
                     </div>
                 </div>
@@ -66,8 +78,8 @@ PublicAsset::register($this);
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="/">Офис</a></li>
-                            <li><a href="/">Регионы</a></li>
+                            <li><a href="/site/office">Офис</a></li>
+                            <li><a href="/site/salons">Регионы</a></li>
                             <li><a href="/">Рассылка</a></li>
                             <li><a href="/">Облако</a></li>
                         </ul>

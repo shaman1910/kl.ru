@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Department;
 use app\models\Profile;
 use Yii;
 use yii\filters\AccessControl;
@@ -11,6 +12,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm as Login;
 use app\models\Signup;
 use app\models\ContactForm;
+
 
 class SiteController extends Controller
 {
@@ -63,8 +65,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = Profile::find()->all();
-        return $this->render('index',['model'=>$model]);
+
+        return $this->render('index');
     }
 
     public function actionLogin()
@@ -96,23 +98,6 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
 
     public function actionSignup()
     {
@@ -128,13 +113,24 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
+    public function actionOffice()
     {
-        return $this->render('about');
+        $departments = Department::find()->all();
+        return $this->render('office', [
+            'departments'=>$departments,
+        ]);
     }
+
+    public function actionOfficeView($id)
+    {
+        $departments = Department::find()->all();
+        $chiefs = Profile::find()->where(['department_id'=>$id, 'chief' => 1])->all();
+        $profiles = Profile::find()->where(['department_id'=>$id, 'chief' => 0])->all();
+        return $this->render('officeview', [
+            'profiles'=>$profiles,
+            'departments'=>$departments,
+            'chiefs'=>$chiefs,
+        ]);
+    }
+
 }

@@ -38,5 +38,6 @@ class PublicAsset extends AssetBundle
     ];
     public $depends = [
 
+
     ];
 }

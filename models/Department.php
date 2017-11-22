@@ -46,4 +46,5 @@ class Department extends \yii\db\ActiveRecord
         return $this->hasMany(Profile::className(), ['department_id' => 'id']);
     }
 
+
 }
