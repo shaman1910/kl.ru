@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\models\Department;
+use app\models\ImageUpload;
 use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
@@ -10,6 +11,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -146,5 +148,23 @@ class ProfileController extends Controller
             'selectedDepartment'=>$selectedDepartment,
             'departments'=>$departments
         ]);
+    }
+
+    public function actionSetImage($id)
+    {
+        $model = new ImageUpload;
+
+        if (Yii::$app->request->isPost)
+        {
+            $profile = $this->findModel($id);
+            $file = UploadedFile::getInstance($model, 'image');
+
+            if($profile->saveImage($model->uploadFile($file, $profile->image)))
+            {
+                return $this->redirect(['view', 'id'=>$profile->id]);
+            }
+        }
+
+        return $this->render('image', ['model'=>$model]);
     }
 }

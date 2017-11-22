@@ -1,16 +1,19 @@
 <?php
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 /* @var $this yii\web\View */
-/* @var $model app\models\Article */
+/* @var $model app\models\Profile */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="article-form">
+<div class="profile-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= Html::dropDownList('department', $selectedDepartment, $departments, ['class'=>'form-control']) ?>
+    <?= $form->field($model, 'image')->fileInput(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-success']) ?>

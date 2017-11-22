@@ -34,13 +34,13 @@ use yii\helpers\Url;
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="/public/images/home/product1.jpg" alt="" />
-                                    <h2><?= $profile->name?> <?= $profile->surname?> <?= $profile->patronymic?></h2>
+                                    <img src="<?= $profile->getImage();?>" alt="" />
+                                    <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?></h2>
                                     <p><?= $profile->position?></p>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
-                                        <h2><?= $profile->name?> <?= $profile->surname?> <?= $profile->patronymic?></h2>
+                                        <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?></h2>
                                         <p><?= $profile->position?></p>
                                         <p><i class="fa fa-phone"></i> Тел. внутренний: 135</p>
                                         <p><i class="fa fa-mobile-phone"></i> Тел. корп.: +7-961-732-7979</p>
@@ -61,13 +61,13 @@ use yii\helpers\Url;
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="/public/images/home/product1.jpg" alt="" />
-                                        <h2><?= $profile->name ?></h2>
+                                        <img src="<?= $profile->getImage();?>" alt="" />
+                                        <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?><?= $profile->name ?></h2>
                                         <p>Ведущий менеджер по мягкой мебели</p>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
-                                            <h2><?= $profile->name ?></h2>
+                                            <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?></h2>
                                             <p>Ведущий менеджер по мягкой мебели</p>
                                             <p><i class="fa fa-phone"></i> Тел. внутренний: 135</p>
                                             <p><i class="fa fa-mobile-phone"></i> Тел. корп.: +7-961-732-7979</p>
