@@ -80,8 +80,8 @@ PublicAsset::register($this);
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="/site/office">Офис</a></li>
                             <li><a href="/site/salons">Регионы</a></li>
-                            <li><a href="/">Рассылка</a></li>
-                            <li><a href="/">Облако</a></li>
+                            <li><a href="https://46.180.147.126:21443/">Рассылка</a></li>
+                            <li><a href="http://cert.gromadacorp.ru/login/index.php">Облако</a></li>
                         </ul>
                     </div>
                 </div>
@@ -107,8 +107,8 @@ PublicAsset::register($this);
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright © 2017 E-SHOPPER Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+                <p class="pull-left">Мебельвилль <?= date('Y') ?></p>
+                <p class="pull-right"><?= Yii::powered() ?></a></span></p>
             </div>
         </div>
     </div>

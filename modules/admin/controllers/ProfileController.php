@@ -86,13 +86,21 @@ class ProfileController extends Controller
      */
     public function actionUpdate($id)
     {
+
+        $profile = $this->findModel($id);
+        $selectedDepartment = $profile->department->id;
+        $departments = ArrayHelper::map(Department::find()->all(), 'id', 'title');
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'selectedDepartment'=>$selectedDepartment,
+                'departments'=>$departments,
+                'model' => $model
+
             ]);
         }
     }
@@ -131,6 +139,7 @@ class ProfileController extends Controller
 
         $profile = $this->findModel($id);
         $selectedDepartment = $profile->department->id;
+
         $departments = ArrayHelper::map(Department::find()->all(), 'id', 'title');
 
         if(Yii::$app->request->isPost)

@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,19 +19,27 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'patronymic')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date_bith')->textInput() ?>
+    <?= $form->field($model, 'department_id')->dropDownList($departments, ['class'=>'form-control']); ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'chief')->dropDownList([
+        1 => 'Руководитель',
+        0 => 'Сотрудник'
+    ], ['class'=>'form-control']); ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status')->dropDownList([
+        1 => 'Активировано',
+        0 => 'Деактивировано'
+    ], ['class'=>'form-control']); ?>
 
     <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'department_id')->textInput() ?>
+
+    <?= $form->field($model, 'date_bith')->textInput() ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'user_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -38,7 +38,7 @@ class Profile extends \yii\db\ActiveRecord
             [['date_bith'], 'safe'],
             [['user_id'], 'required'],
             [['user_id', 'department_id'], 'integer'],
-            [['name', 'surname', 'patronymic', 'image', 'email', 'status', 'position'], 'string', 'max' => 255],
+            [['name', 'surname', 'patronymic', 'image', 'email', 'status', 'chief', 'position'], 'string', 'max' => 255],
         ];
     }
 
@@ -56,6 +56,7 @@ class Profile extends \yii\db\ActiveRecord
             'image' => 'Image',
             'email' => 'Email',
             'status' => 'Status',
+            'chief' => 'chief',
             'position' => 'Position',
             'user_id' => 'User ID',
             'department_id' => 'Department ID',
