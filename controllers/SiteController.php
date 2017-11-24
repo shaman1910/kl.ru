@@ -11,7 +11,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm as Login;
 use app\models\Signup;
-use app\models\ContactForm;
 
 
 class SiteController extends Controller
@@ -115,7 +114,7 @@ class SiteController extends Controller
 
     public function actionOffice()
     {
-        $departments = Department::find()->all();
+        $departments = Department::find()->where(['salon_or_office'=> 'office'])->all();
         return $this->render('office', [
             'departments'=>$departments,
         ]);
@@ -123,9 +122,9 @@ class SiteController extends Controller
 
     public function actionOfficeView($id)
     {
-        $departments = Department::find()->all();
-        $chiefs = Profile::find()->where(['department_id'=>$id, 'chief' => 1])->all();
-        $profiles = Profile::find()->where(['department_id'=>$id, 'chief' => 0])->all();
+        $departments = Department::find()->where(['salon_or_office'=> 'office'])->all();
+        $chiefs = Profile::find()->where(['department_id'=>$id, 'chief' => 1, 'status' => 1])->all();
+        $profiles = Profile::find()->where(['department_id'=>$id, 'chief' => 0, 'status' => 1])->all();
         return $this->render('officeview', [
             'profiles'=>$profiles,
             'departments'=>$departments,
@@ -133,4 +132,29 @@ class SiteController extends Controller
         ]);
     }
 
+
+    public function actionSalon()
+    {
+        $departments = Department::find()->where(['salon_or_office'=> 'salon'])->all();
+        return $this->render('salon', [
+            'departments'=>$departments,
+        ]);
+    }
+
+    public function actionSalonView($id)
+    {
+        $departments = Department::find()->where(['salon_or_office'=> 'salon'])->all();
+        $chiefs = Profile::find()->where(['department_id'=>$id, 'chief' => 1, 'status' => 1])->all();
+        $profiles = Profile::find()->where(['department_id'=>$id, 'chief' => 0, 'status' => 1])->all();
+        return $this->render('salonview', [
+            'profiles'=>$profiles,
+            'departments'=>$departments,
+            'chiefs'=>$chiefs,
+        ]);
+    }
+
+    public function actionMailDelivery()
+    {
+        return '123';
+    }
 }

@@ -26,7 +26,7 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'string', 'max' => 255],
+            [['title', 'salon_or_office'], 'string', 'max' => 255],
         ];
     }
 
@@ -38,6 +38,7 @@ class Department extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
+            'salon_or_office' => 'Салон или офис',
         ];
     }
 

@@ -79,9 +79,10 @@ PublicAsset::register($this);
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="/site/office">Офис</a></li>
-                            <li><a href="/site/salons">Регионы</a></li>
-                            <li><a href="https://46.180.147.126:21443/">Рассылка</a></li>
-                            <li><a href="http://cert.gromadacorp.ru/login/index.php">Облако</a></li>
+                            <li><a href="/site/salon">Регионы</a></li>
+                            <li><a href="/site/mail-delivery">Рассылка</a></li>
+                            <li><a href="http://cert.gromadacorp.ru/login/index.php">Сервер тестирования</a></li>
+                            <li><a href="https://46.180.147.126:21443/">Облако</a></li>
                         </ul>
                     </div>
                 </div>
