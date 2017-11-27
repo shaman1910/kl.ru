@@ -88,8 +88,11 @@ PublicAsset::register($this);
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Поиск"/>
+                        <form method="get" action="<?= Url::to(['search'])?>">
+                        <input type="text" placeholder="Поиск" name="q"/>
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>

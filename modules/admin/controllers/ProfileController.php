@@ -170,7 +170,7 @@ class ProfileController extends Controller
 
             if($profile->saveImage($model->uploadFile($file, $profile->image)))
             {
-                return $this->redirect(['view', 'id'=>$profile->id]);
+                             return $this->redirect(['view', 'id'=>$profile->id]);
             }
         }
 

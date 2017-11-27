@@ -153,6 +153,27 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionSearch($q)
+    {
+
+
+        $departments = Department::find()->all();
+        $query = Profile::find()
+            ->where(['like', 'surname', $q])
+            ->orWhere(['like', 'name', $q])
+            ->all();
+
+
+        return $this->render('search', [
+            'query'=>$query,
+            'q'=>$q,
+            'departments'=>$departments,
+
+        ]);
+
+    }
+
+
     public function actionMailDelivery()
     {
         return '123';
