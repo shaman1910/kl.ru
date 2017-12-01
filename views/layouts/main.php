@@ -11,6 +11,9 @@ use yii\bootstrap\NavBar;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\PublicAsset;
+use yii\web\YiiAsset;
+
+
 
 
 PublicAsset::register($this);
@@ -46,8 +49,9 @@ PublicAsset::register($this);
                         <ul class="nav navbar-nav">
 
                             <?php if(Yii::$app->user->isGuest):?>
-                                <li><a href="<?= Url::toRoute(['site/signup'])?>"><i class="fa fa-edit"></i>Регистрация</a></li>
-                                <li><a href="<?= Url::toRoute(['site/login'])?>"><i class="fa fa-sign-in"></i>Вход</a></li>
+                                <li><a href="<?= Url::toRoute(['/admin'])?>">Admin</a></li>
+                                <li><a href="<?= Url::toRoute(['/site/signup'])?>"><i class="fa fa-edit"></i>Регистрация</a></li>
+                                <li><a href="<?= Url::toRoute(['/site/login'])?>"><i class="fa fa-sign-in"></i>Вход</a></li>
                             <?php else: ?>
                                 <li><a href="<?= Url::toRoute(['profile/index'])?>"><i class="fa fa-user"></i> Профиль</a></li>
                                 <li><?= Html::beginForm(['/site/logout'], 'post')
