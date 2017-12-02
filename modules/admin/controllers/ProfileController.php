@@ -134,30 +134,6 @@ class ProfileController extends Controller
         }
     }
 
-    public function actionSetDepartment($id)
-    {
-
-        $profile = $this->findModel($id);
-        $selectedDepartment = $profile->department->id;
-
-        $departments = ArrayHelper::map(Department::find()->all(), 'id', 'title');
-
-        if(Yii::$app->request->isPost)
-        {
-            $department = Yii::$app->request->post('department');
-           if( $profile->saveDepartment($department))
-            {
-                return $this->redirect(['view', 'id'=>$profile->id]);
-            }
-        }
-
-
-        return $this->render('department',[
-            'profile'=>$profile,
-            'selectedDepartment'=>$selectedDepartment,
-            'departments'=>$departments
-        ]);
-    }
 
     public function actionSetImage($id)
     {

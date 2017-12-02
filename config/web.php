@@ -51,6 +51,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'search' => 'site/search'
             ],
         ],
     ],
@@ -69,7 +70,7 @@ $config = [
                 ],
             ],
             'layout' => 'left-menu',
-            'mainLayout' => '@app/views/layouts/main.php',
+            'mainLayout' => '@app/modules/admin/views/layouts/main.php',
         ]
     ],
     'as access' => [
