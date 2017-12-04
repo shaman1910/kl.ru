@@ -12,6 +12,7 @@ use yii\helpers\Url;
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title"><a href="<?= Url::toRoute(['site/office-view', 'id'=>$department->id]) ?>"><?= $department->title ?></a></h4>
+
                                 </div>
                             </div>
                         <?php endforeach;?>
@@ -40,6 +41,7 @@ use yii\helpers\Url;
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
+
                                         <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?></h2>
                                         <p><?= $profile->position?></p>
                                         <p><i class="fa fa-phone"></i> Тел. внутренний: 135</p>

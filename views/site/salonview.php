@@ -71,7 +71,7 @@ use yii\helpers\Url;
                                             <p>Ведущий менеджер по мягкой мебели</p>
                                             <p><i class="fa fa-phone"></i> Тел. внутренний: 135</p>
                                             <p><i class="fa fa-mobile-phone"></i> Тел. корп.: +7-961-732-7979</p>
-                                            <p><i class="fa fa-envelope"></i> Почта: a.gorjunov@gromada.pro</p>
+                                            <p><i class="fa fa-envelope"></i> Почта: </p>
                                             <p><i class="fa fa-calendar"></i> Дата рождения: 16.11</p>
                                         </div>
                                     </div>
