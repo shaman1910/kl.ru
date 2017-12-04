@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\Department;
+use app\models\Email;
 use app\models\Profile;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm as Login;
@@ -114,6 +116,7 @@ class SiteController extends Controller
 
     public function actionOffice()
     {
+
         $departments = Department::find()->where(['salon_or_office'=> 'office'])->all();
         return $this->render('office', [
             'departments'=>$departments,
@@ -143,9 +146,13 @@ class SiteController extends Controller
 
     public function actionSalonView($id)
     {
+
         $departments = Department::find()->where(['salon_or_office'=> 'salon'])->all();
         $chiefs = Profile::find()->where(['department_id'=>$id, 'chief' => 1, 'status' => 1])->all();
         $profiles = Profile::find()->where(['department_id'=>$id, 'chief' => 0, 'status' => 1])->all();
+
+
+
         return $this->render('salonview', [
             'profiles'=>$profiles,
             'departments'=>$departments,
@@ -178,4 +185,7 @@ class SiteController extends Controller
     {
         return '123';
     }
+
+
+
 }

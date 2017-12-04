@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Email;
 use Yii;
 use app\models\Department;
 use app\models\SearchDepartment;
@@ -64,12 +65,27 @@ class DepartmentController extends Controller
     public function actionCreate()
     {
         $model = new Department();
+        $email = new Email();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+
+        if ($model->load(Yii::$app->request->post()) && $email->load(Yii::$app->request->post())) {
+            $isValid = $model->validate();
+            $isValid = $email->validate() && $isValid;
+
+            if ($isValid) {
+                $model->save(false);
+                $email->save(false);
+
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }
+
+        else {
             return $this->render('create', [
                 'model' => $model,
+                'email' => $email,
+
             ]);
         }
     }
@@ -83,12 +99,23 @@ class DepartmentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $email_client = Email::findOne($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        if ($model->load(Yii::$app->request->post()) && $email_client->load(Yii::$app->request->post())) {
+            $isValid = $model->validate();
+            $isValid = $email_client->validate() && $isValid;
+                       if ($isValid) {
+                $model->save(false);
+                $email_client->save(false);
+
+
+                return $this->redirect(['view', 'id' => $id]);
+            }
+        }
+        else {
             return $this->render('update', [
                 'model' => $model,
+                'email_client' => $email_client,
             ]);
         }
     }

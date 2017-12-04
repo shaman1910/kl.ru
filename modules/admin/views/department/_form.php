@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($email_client, 'email_client')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'salon_or_office')->dropDownList([
         'salon' => 'Салон',
