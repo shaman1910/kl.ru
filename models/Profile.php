@@ -35,10 +35,13 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date_bith'], 'safe'],
+
             [['user_id'], 'required'],
             [['user_id', 'department_id'], 'integer'],
             [['name', 'surname', 'patronymic', 'image', 'email', 'status', 'chief', 'position'], 'string', 'max' => 255],
+
+            [['name'], 'match', 'pattern' => '#^\+[0-9]{1,2}\s?\([0-9]{3}\)\s?[0-9]+\-[0-9]+\-[0-9]+$#', 'message' => 'Некорректный номер телефона' ],
+
         ];
     }
 

@@ -1,6 +1,10 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\jui\DatePicker;
+use yii\web\View;
+use yii\web\JsExpression;
+
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -24,6 +28,30 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
+
+            <?= $form->field($profile, 'name')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($profile, 'surname')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($profile, 'patronymic')->textInput(['maxlength' => true]) ?>
+
+            <?//= $form->field($profile, 'department_id')->dropDownList($departments, ['class'=>'form-control']); ?>
+
+            <?= $form->field($profile, 'chief')->dropDownList([
+                1 => 'Руководитель',
+                0 => 'Сотрудник'
+            ], ['class'=>'form-control']); ?>
+
+            <?= $form->field($profile, 'status')->dropDownList([
+                1 => 'Активировано',
+                0 => 'Деактивировано'
+            ], ['class'=>'form-control']); ?>
+
+            <?= $form->field($profile, 'position')->textInput(['maxlength' => true]) ?>
+
+                     <?= $form->field($profile, 'email')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($profile, 'date_bith') ?>
 
 
 

@@ -103,14 +103,18 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new Signup();
-        if ($model->load(Yii::$app->getRequest()->post())) {
+        $profile = new Profile();
+
+        if ($model->load(Yii::$app->getRequest()->post()) && $profile->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
+                $profile->save(false);
                 return $this->goHome();
             }
         }
 
         return $this->render('signup', [
             'model' => $model,
+            'profile' => $profile,
         ]);
     }
 
@@ -146,12 +150,9 @@ class SiteController extends Controller
 
     public function actionSalonView($id)
     {
-
         $departments = Department::find()->where(['salon_or_office'=> 'salon'])->all();
         $chiefs = Profile::find()->where(['department_id'=>$id, 'chief' => 1, 'status' => 1])->all();
         $profiles = Profile::find()->where(['department_id'=>$id, 'chief' => 0, 'status' => 1])->all();
-
-
 
         return $this->render('salonview', [
             'profiles'=>$profiles,
@@ -162,22 +163,16 @@ class SiteController extends Controller
 
     public function actionSearch($q)
     {
-
-
         $departments = Department::find()->all();
         $query = Profile::find()
             ->where(['like', 'surname', $q])
             ->orWhere(['like', 'name', $q])
             ->all();
-
-
         return $this->render('search', [
             'query'=>$query,
             'q'=>$q,
             'departments'=>$departments,
-
         ]);
-
     }
 
 

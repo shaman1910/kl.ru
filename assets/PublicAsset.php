@@ -37,7 +37,10 @@ class PublicAsset extends AssetBundle
     "public/js/main.js",
     ];
     public $depends = [
+
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+
     ];
+
 }

@@ -66,26 +66,19 @@ class DepartmentController extends Controller
     {
         $model = new Department();
         $email = new Email();
-
-
         if ($model->load(Yii::$app->request->post()) && $email->load(Yii::$app->request->post())) {
             $isValid = $model->validate();
             $isValid = $email->validate() && $isValid;
-
             if ($isValid) {
                 $model->save(false);
                 $email->save(false);
-
-
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
-
         else {
             return $this->render('create', [
                 'model' => $model,
                 'email' => $email,
-
             ]);
         }
     }
