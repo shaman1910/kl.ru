@@ -104,6 +104,7 @@ class SiteController extends Controller
     {
         $model = new Signup();
         $profile = new Profile();
+        $departments = Department::find()->all();
 
         if ($model->load(Yii::$app->getRequest()->post()) && $profile->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
@@ -115,6 +116,7 @@ class SiteController extends Controller
         return $this->render('signup', [
             'model' => $model,
             'profile' => $profile,
+            'departments' => $departments,
         ]);
     }
 

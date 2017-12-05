@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "profile".
  *
@@ -35,13 +36,7 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-
-            [['user_id'], 'required'],
-            [['user_id', 'department_id'], 'integer'],
-            [['name', 'surname', 'patronymic', 'image', 'email', 'status', 'chief', 'position'], 'string', 'max' => 255],
-
-            [['name'], 'match', 'pattern' => '#^\+[0-9]{1,2}\s?\([0-9]{3}\)\s?[0-9]+\-[0-9]+\-[0-9]+$#', 'message' => 'Некорректный номер телефона' ],
-
+            [['user_id', 'name', 'surname', 'patronymic', 'image', 'status', 'chief', 'position', 'date_bith'], 'required'],
         ];
     }
 
@@ -52,17 +47,16 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'surname' => 'Surname',
-            'patronymic' => 'Patronymic',
-            'date_bith' => 'Date Bith',
+            'name' => 'Имя',
+            'surname' => 'Фамилия',
+            'patronymic' => 'Отчество',
+            'date_bith' => 'День рождения',
             'image' => 'Image',
-            'email' => 'Email',
-            'status' => 'Status',
-            'chief' => 'chief',
-            'position' => 'Position',
+            'status' => 'Статус',
+            'chief' => 'Руководитель',
+            'position' => 'Должность',
             'user_id' => 'User ID',
-            'department_id' => 'Department ID',
+            'department_id' => 'отдел',
         ];
     }
 

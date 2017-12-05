@@ -1,9 +1,12 @@
 <?php
+
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
 use yii\web\View;
 use yii\web\JsExpression;
+use yii\widgets\MaskedInput;
 
 
 /* @var $this yii\web\View */
@@ -35,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($profile, 'patronymic')->textInput(['maxlength' => true]) ?>
 
-            <?//= $form->field($profile, 'department_id')->dropDownList($departments, ['class'=>'form-control']); ?>
+            <?= $form->field($profile, 'department_id')->dropDownList(ArrayHelper::map($departments, 'id', 'title'), ['class'=>'form-control']); ?>
 
             <?= $form->field($profile, 'chief')->dropDownList([
                 1 => 'Руководитель',
@@ -51,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                      <?= $form->field($profile, 'email')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($profile, 'date_bith') ?>
+            <?= $form->field($profile, 'date_bith')->widget(MaskedInput::className(),['mask'=>'9999-99-99'])->textInput(['placeholder'=>'1900-00-00']); ?>
 
 
 
