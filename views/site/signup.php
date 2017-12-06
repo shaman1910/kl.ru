@@ -56,9 +56,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($profile, 'email')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($profile, 'date_bith')->widget(MaskedInput::className(),['mask'=>'9999-99-99'])->textInput(['placeholder'=>'1900-00-00']); ?>
+            <?= $form->field($profile, 'date_bith')->widget(DatePicker::className(),[
+                'dateFormat' => 'yyyy-MM-dd',
+                'clientOptions' => [
+                    'yearRange' => '1930:2017',
+                    'changeMonth' => 'true',
+                    'changeYear' => 'true',
+                    'autoSize'=>true,
 
-
+                ]
+            ])->widget(MaskedInput::className(),['mask'=>'9999-99-99'])->textInput(['placeholder'=>'1900-00-00']); ?>
 
         </div>
         <div class="col-lg-5">

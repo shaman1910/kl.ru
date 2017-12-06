@@ -37,6 +37,8 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'name', 'surname', 'patronymic', 'image', 'status', 'chief', 'position', 'date_bith'], 'required'],
+            [ ['date_bith'],'date', 'format'=>'dd-mm-yy'],
+
         ];
     }
 
