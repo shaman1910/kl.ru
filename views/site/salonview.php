@@ -45,7 +45,8 @@ use yii\helpers\Url;
                                             <p><i class="fa fa-phone"></i> Тел. внутренний: 135</p>
                                             <p><i class="fa fa-mobile-phone"></i> Тел. корп.: +7-961-732-7979</p>
                                             <p><i class="fa fa-envelope"></i> Почта: <?= $profile->email?></p>
-                                            <p><i class="fa fa-calendar"></i> Дата рождения: <?= $profile->date_bith?></p>
+                                            <p><i class="fa fa-calendar"></i> Дата рождения: <?= $profile->getDate('medium') ?></p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -62,17 +63,17 @@ use yii\helpers\Url;
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?= $profile->getImage();?>" alt="" />
-                                        <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?><?= $profile->name ?></h2>
-                                        <p>Ведущий менеджер по мягкой мебели</p>
+                                        <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?></h2>
+                                        <p><?= $profile->position?></p>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
                                             <h2><?= $profile->surname?> <?= $profile->name?> <?= $profile->patronymic?></h2>
-                                            <p>Ведущий менеджер по мягкой мебели</p>
+                                            <p><?= $profile->position?></p>
                                             <p><i class="fa fa-phone"></i> Тел. внутренний: 135</p>
                                             <p><i class="fa fa-mobile-phone"></i> Тел. корп.: +7-961-732-7979</p>
-                                            <p><i class="fa fa-envelope"></i> Почта: </p>
-                                            <p><i class="fa fa-calendar"></i> Дата рождения: 16.11</p>
+                                            <p><i class="fa fa-envelope"></i> Почта: <?= $profile->email?></p>
+                                            <p><i class="fa fa-calendar"></i> Дата рождения: <?= $profile->getDate('medium') ?></p>
                                         </div>
                                     </div>
                                 </div>

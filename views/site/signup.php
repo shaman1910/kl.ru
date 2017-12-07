@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($profile, 'name')->textInput(['maxlength' => true]) ?>
-
             <?= $form->field($profile, 'surname')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($profile, 'name')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($profile, 'patronymic')->textInput(['maxlength' => true]) ?>
 
