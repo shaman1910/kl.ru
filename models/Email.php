@@ -37,7 +37,7 @@ class Email extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'email_client' => 'Email_client',
+            'email_client' => 'Email',
         ];
     }
 }

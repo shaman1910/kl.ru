@@ -37,13 +37,11 @@ class Profile extends ActiveRecord
     {
         return [
             [['user_id', 'name', 'surname', 'patronymic', 'image', 'status', 'chief', 'position', 'date_bith', 'department_id'], 'required'],
-
-
         ];
     }
 
     /**
-     * @inheritdoc
+     * @inheritdocf
      */
     public function attributeLabels()
     {

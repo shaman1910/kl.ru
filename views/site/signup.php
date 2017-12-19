@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
-            <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'email')->input('email') ?>
 
             <?= $form->field($profile, 'surname')->textInput(['maxlength' => true]) ?>
 

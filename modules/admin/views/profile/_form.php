@@ -2,7 +2,9 @@
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
+use yii\widgets\MaskedInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Profile */
@@ -35,7 +37,16 @@ use yii\widgets\ActiveForm;
 
 
 
-    <?= $form->field($model, 'date_bith')->textInput() ?>
+    <?= $form->field($model, 'date_bith')->widget(DatePicker::className(),[
+        'dateFormat' => 'yyyy-MM-dd',
+        'clientOptions' => [
+            'yearRange' => '1930:2017',
+            'changeMonth' => 'true',
+            'changeYear' => 'true',
+            'autoSize'=>true,
+
+        ]
+    ])->widget(MaskedInput::className(),['mask'=>'9999-99-99'])->textInput(['placeholder'=>'1900-00-00']); ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

@@ -67,13 +67,17 @@ class ProfileController extends Controller
      */
     public function actionCreate()
     {
+        $departments = ArrayHelper::map(Department::find()->all(), 'id', 'title');
+
         $model = new Profile();
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'departments' => $departments,
             ]);
         }
     }
